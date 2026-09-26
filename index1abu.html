@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="utf-8">
-  <title>Kontrol Lampu ESP32 Mega Mendung</title>
+  <title>Stadion ESP32 - Kontrol Lampu</title>
   <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
   <style>
     body {
@@ -10,34 +10,34 @@
       text-align: center;
       margin: 0;
       padding: 20px;
-      /* Gradasi warna biru khas Batik Mega Mendung */
-      background: linear-gradient(135deg, #0a192f, #1e3a8a, #3b82f6, #93c5fd);
+      /* Warna latar belakang hijau lapangan sepak bola */
+      background: linear-gradient(180deg, #1b5e20 0%, #388e3c 100%);
       color: white;
       min-height: 100vh;
     }
 
     .kartu-utama {
       background-color: rgba(255, 255, 255, 0.95);
-      color: #1e293b;
+      color: #1b5e20;
       max-width: 350px;
-      margin: 40px auto;
-      padding: 30px;
+      margin: 30px auto;
+      padding: 25px;
       border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-      border: 4px solid #1e3a8a;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+      border: 4px solid #ffffff;
     }
 
-    /* Tampilan Ikon Lampu */
+    /* Tampilan Lampu Redup (Mati) */
     .gambar-lampu {
-      font-size: 100px;
-      margin: 20px 0;
+      font-size: 90px;
+      margin: 15px 0;
       transition: all 0.3s ease;
-      filter: grayscale(100%) opacity(0.3); /* Lampu mati (redup) */
+      filter: grayscale(100%) opacity(0.3);
     }
 
-    /* Efek Saat Lampu Menyala */
+    /* Tampilan Lampu Menyala (Bercahaya Kuning) */
     .lampu-nyala {
-      filter: grayscale(0%) drop-shadow(0 0 30px #facc15); /* Cahaya kuning */
+      filter: grayscale(0%) drop-shadow(0 0 25px #facc15);
       transform: scale(1.1);
     }
 
@@ -52,15 +52,15 @@
       color: white;
     }
 
-    .tombol-on { background-color: #16a34a; }
-    .tombol-off { background-color: #dc2626; }
+    .tombol-on { background-color: #2e7d32; }
+    .tombol-off { background-color: #c62828; }
   </style>
 </head>
 <body>
 
   <div class="kartu-utama">
-    <h2>Kontrol Lampu ESP32</h2>
-    <p>☁️ Tema Mega Mendung ☁️</p>
+    <h2>⚽ Stadion ESP32 ⚽</h2>
+    <p>Kontrol Lampu Lapangan</p>
 
     <!-- Gambar Lampu Interaktif -->
     <div id="lampu" class="gambar-lampu">💡</div>
@@ -73,10 +73,9 @@
     const client = mqtt.connect('wss://broker.hivemq.com:8884/mqtt');
 
     function kirim(perintah) {
-      // Mengirim sinyal ke ESP32
       client.publish('rumah/lampu_unik_123', perintah);
-      
-      // Mengubah tampilan gambar lampu di layar
+
+      // Ubah tampilan lampu di layar HP/Komputer
       const lampuElem = document.getElementById('lampu');
       if (perintah === 'ON') {
         lampuElem.classList.add('lampu-nyala');
