@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 LED Control Panel</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 360px;
+            padding: 30px 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        h2 {
+            color: #1a1a1a;
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+
+        p.subtitle {
+            color: #65676b;
+            font-size: 13px;
+            margin-bottom: 24px;
+        }
+
+        .status-box {
+            background-color: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .status-label {
+            font-size: 11px;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .status-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2e7d32;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.1s ease;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-on {
+            background-color: #2e7d32;
+        }
+
+        .btn-off {
+            background-color: #c62828;
+        }
+
+        .footer {
+            margin-top: 24px;
+            font-size: 11px;
+            color: #8d949e;
+            border-top: 1px solid #eee;
+            padding-top: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Panel Kontrol ESP32</h2>
+        <p class="subtitle">Kontrol LED via Wi-Fi & Saklar Fisik</p>
+
+        <div class="status-box">
+            <div class="status-label">Status LED</div>
+            <div class="status-value">SIAP KONTROL</div>
+        </div>
+
+        <div class="btn-group">
+            <a href="/?led=on" class="btn btn-on">NYALAKAN (ON)</a>
+            <a href="/?led=off" class="btn btn-off">MATIKAN (OFF)</a>
+        </div>
+
+        <div class="footer">
+            Pin D2 (LED) | Pin 32 (ON) | Pin 35 (OFF)
+        </div>
+    </div>
+
+</body>
+</html>
