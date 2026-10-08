@@ -1,0 +1,17 @@
+# ESP32 Dual Control LED (Wi-Fi Web Server & Physical Switches)
+
+Program MicroPython untuk mengontrol LED pada ESP32 menggunakan dua saklar fisik (Push Button) serta melalui HP (Web Browser) secara simultan melalui Wi-Fi.
+
+## 🛠️ Pin Out & Wiring
+* **LED:** GPIO 2 (Anoda) -> Resistor 220 Ω -> GND (Katoda)
+* **Tombol ON:** GPIO 32 (Internal Pull-Down)
+* **Tombol OFF:** GPIO 35 (Wajib Resistor Pull-Down 10k Ω Eksternal ke GND)
+
+> **Catatan:** Pin GPIO 35 adalah *Input-Only* dan tidak mendukung internal pull-down resistor.
+
+## 🚀 Cara Penggunaan di Thonny IDE
+1. Buka **Thonny IDE** dan pilih interpreter **MicroPython (ESP32)**.
+2. Edit file `main.py`, masukkan `WIFI_SSID` dan `WIFI_PASS` sesuai koneksi Wi-Fi kamu.
+3. Simpan `main.py` langsung ke dalam MicroPython Device (ESP32).
+4. Jalankan program (F5) dan lihat Alamat IP yang muncul di Shell Thonny IDE.
+5. Buka alamat IP tersebut di Browser HP kamu untuk mengontrol LED.
